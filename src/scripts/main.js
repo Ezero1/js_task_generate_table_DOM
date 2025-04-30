@@ -363,19 +363,23 @@ function calculateAgeAndCentury(person) {
   return { age, century };
 }
 
-people.forEach((person) => {
-  const { age, century } = calculateAgeAndCentury(person);
+if (table) {
+  people.forEach((person) => {
+    const { age, century } = calculateAgeAndCentury(person);
 
-  const row = document.createElement('tr');
+    const row = document.createElement('tr');
 
-  row.innerHTML = `
-    <td>${person.name}</td>
-    <td>${person.sex === 'm' ? 'Male' : 'Female'}</td>
-    <td>${person.born}</td>
-    <td>${person.died}</td>
-    <td>${age}</td>
-    <td>${century}</td>
-  `;
+    row.innerHTML = `
+        <td>${person.name}</td>
+        <td>${person.sex === 'm' ? 'Male' : 'Female'}</td>
+        <td>${person.born}</td>
+        <td>${person.died}</td>
+        <td>${age}</td>
+        <td>${century}</td>
+      `;
 
-  table.appendChild(row);
-});
+    table.appendChild(row);
+  });
+} else {
+  alert('Елемент з класом .dashboard не знайдено в DOM!');
+}
